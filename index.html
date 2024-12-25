@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Slider</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Times New Roman, sans-serif;
+            background-color: #32373B;
+        }
+
+
+
+        .header {
+    background-color: #32373B; /* Set dark background */
+    background-image: 
+        url('./Images/header.png'), /* First image */
+        url('path/to/your/second-image.jpg'); /* Second image */
+    background-size: cover; /* Ensure images cover the entire area */
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 60px 20px; /* Adjust padding */
+    text-align: center;
+    color: #FFFFFF; /* Make text more visible on the dark background */
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    animation: slideIn 1s ease-out, blink 2s infinite;
+}
+
+.header-dark-background {
+    background-color: #2B2B2B; /* Darker section directly under the header */
+    padding: 20px;
+    text-align: center;
+}
+
+
+
+
+
+/* Animation for smooth entrance */
+@keyframes slideIn {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
+        /* Animation for smooth entrance */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .header .subtext {
+            font-size: 16px; /* Further reduced subtext font size */
+            font-weight: normal;
+            margin-top: 10px;
+            font-family: 'Roboto', sans-serif;
+            opacity: 0.8;
+        }
+
+        .featured-product {
+            position: relative;
+            text-align: center;
+            padding: 20px;
+            background-color: #32373B;
+        }
+
+        .image-slider {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .image-slider img {
+            width: 100%;
+            height: auto;
+            display: none;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .image-slider img.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .slider-controls button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #4A5859;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .slider-controls button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .product-slider {
+            background-color: #4A5859;
+            padding: 20px 10px;
+        }
+
+        .product-slider h3 {
+            text-align: center;
+            color: #4A5859;
+            margin-bottom: 10px;
+        }
+
+        .slider-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 10px;
+            scroll-snap-type: x mandatory;
+        }
+
+        .slider-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .slider-container::-webkit-scrollbar-thumb {
+            background-color: #505c7e;
+            border-radius: 4px;
+        }
+
+        .slider-item {
+            flex: 0 0 auto;
+            width: 120px;
+            height: 200px;
+            background-color: #4A5859;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 10px;
+            scroll-snap-align: start;
+        }
+
+        .slider-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .slider-item p {
+            margin: 10px 0 0;
+            color: white; /* Set text color to white */
+            font-size: 10px;
+
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 80%;
+        }
+
+        .modal img {
+            width: 100%;
+            height: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: rgb(255, 255, 255);
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: #ff6600;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #2C2C2C;
+            color: #FFFFFF;
+            padding: 20px 15px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer .contact-info, .footer .about-company {
+            flex: 1;
+            margin: 10px;
+            max-width: 400px;
+        }
+
+        .footer .contact-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer .contact-info ul li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer .contact-info ul li i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .footer .about-company p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .footer .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .footer .social-links a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #5F5F5F;
+            color: #FFFFFF;
+            text-decoration: none;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .footer .social-links a:hover {
+            background-color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1></h1>
+    <p class="subtext"></p>
+</div>
+
+<div class="featured-product">
+    <div class="image-slider">
+        <img src="./Images/11.jpg" alt="Featured Image 1" class="active">
+        <img src="./Images/12.jpg" alt="Featured Image 2">
+        <img src="./Images/13.jpg" alt="Featured Image 2">
+    </div>
+    <h2 style="color: white;">Special Promotions</h2>
+
+</div>
+
+<div class="product-slider">
+    <h3 style="color: white;">Category</h3>
+    <div class="slider-container">
+        <div class="slider-item">
+            <img src="./Images/1.jpg" alt="New Product" onclick="openModal('./Images/1.jpg')">
+            <p>Menu Type</p>
+        </div>
+        <div class="slider-item">
+            <img src="./Images/2.jpg" alt="Product 2" onclick="openModal('./Images/2.jpg')">
+            <p>ប្រភេទឆា</p>
+        </div>
+        <div class="slider-item">
+            <img src="./Images/3.jpg" alt="Product 3" onclick="openModal('./Images/3.jpg')">
+            <p>ប្រភេទញាំ</p>
+        </div>
+        <div class="slider-item">
+            <img src="./Images/4.jpg" alt="Product 4" onclick="openModal('./Images/4.jpg')">
+            <p>ប្រភេទអាំង</p>
+        </div>
+        <div class="slider-item">
+            <img src="./Images/5.jpg" alt="Product 5" onclick="openModal('./Images/5.jpg')">
+            <p>ប្រភេទបំពង</p>
+        </div>
+        <div class="slider-item">
+            <img src="./Images/6.jpg" alt="Product 6" onclick="openModal('./Images/6.jpg')">
+            <p>ប្រភេទចំហុយ និង​ ស៊ុប</p>
+        </div>
+        <div class="slider-item">
+            <img src="./Images/7.jpg" alt="Product 7" onclick="openModal('./Images/7.jpg')">
+            <p>ប្រភេទចៀន និង​ ក្រឡុក</p>
+        </div>
+        <div class="slider-item">
+            <img src="./Images/8.jpg" alt="Product 8" onclick="openModal('./Images/8.jpg')">
+            <p>Beer Drink</p>
+        </div>
+        <div class="slider-item">
+            <img src="./Images/9.jpg" alt="Product 9" onclick="openModal('./Images/9.jpg')">
+            <p>Energy Drink</p>
+        </div>
+        <div class="slider-item">
+            <img src="./Images/10.jpg" alt="Product 10" onclick="openModal('./Images/10.jpg')">
+            <p>Special Offer</p>
+        </div>
+    </div>
+</div>
+
+<!-- Modal to display image -->
+<div id="imageModal" class="modal">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+        <img id="modalImage" src="" alt="Image Preview">
+    </div>
+</div>
+
+<div class="footer">
+    <div class="contact-info">
+        <ul>
+            <li>
+                <img src="./Images/symbol/13.png" alt="Location Icon" style="width: 12px; margin-right: 10px;">
+                Phnom Penh, Cambodia
+            </li>
+            <li>
+                <img src="./Images/symbol/12.png" alt="Phone Icon" style="width: 12px; margin-right: 10px;">
+                +855 70 607 798
+            </li>
+            <li>
+                <img src="./Images/symbol/Email.png" alt="Email Icon" style="width: 12px; margin-right: 10px;">
+                support@company.com
+            </li>
+        </ul>
+    </div>
+    <div class="about-company">
+        <div style="font-size: 12px;">
+            <p style="font-size: 1.5em;">Thanks you for choosing us!</p>
+        </div>
+        <p class="spaced-text">Your satisfaction is our priority.</p>
+    </div>
+    
+    <style>
+        .spaced-text {
+            line-height: 3.8; /* Adjust the number for more or less space */
+        }
+    </style>
+    
+        <!-- 
+<div class="social-links">
+    <a href="#"><i class="fab fa-facebook-f"></i></a> 
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#"><i class="fab fa-github"></i></a>
+</div>
+-->
+
+    </div>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.image-slider img');
+
+    function showSlide(index) {
+        if (index >= slides.length) currentSlide = 0;
+        if (index < 0) currentSlide = slides.length - 1;
+
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            if (i === currentSlide) {
+                slide.classList.add('active');
+            }
+        });
+    }
+
+    function autoSlide() {
+        currentSlide++;
+        showSlide(currentSlide);
+    }
+
+    // Initialize slider
+    showSlide(currentSlide);
+
+    // Set interval for automatic sliding every 3 seconds
+    setInterval(autoSlide, 6000);
+
+    // Modal functionality
+    function openModal(imageSrc) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        modal.style.display = "flex";
+        modalImage.src = imageSrc;
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('imageModal');
+        modal.style.display = "none";
+    }
+</script>
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
