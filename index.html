@@ -319,48 +319,83 @@
 <div class="product-slider">
     <h3 style="color: white;">Category</h3>
     <div class="slider-container">
+        <!-- Disable clicks on the images -->
         <div class="slider-item">
-            <img src="./Images/1.jpg" alt="New Product" onclick="openModal('./Images/1.jpg')">
+            <img src="./Images/1.jpg" alt="New Product">
             <p>Menu Type</p>
         </div>
         <div class="slider-item">
-            <img src="./Images/2.jpg" alt="Product 2" onclick="openModal('./Images/2.jpg')">
+            <img src="./Images/2.jpg" alt="Product 2">
             <p>ប្រភេទឆា</p>
         </div>
         <div class="slider-item">
-            <img src="./Images/3.jpg" alt="Product 3" onclick="openModal('./Images/3.jpg')">
+            <img src="./Images/3.jpg" alt="Product 3">
             <p>ប្រភេទញាំ</p>
         </div>
         <div class="slider-item">
-            <img src="./Images/4.jpg" alt="Product 4" onclick="openModal('./Images/4.jpg')">
+            <img src="./Images/4.jpg" alt="Product 4">
             <p>ប្រភេទអាំង</p>
         </div>
         <div class="slider-item">
-            <img src="./Images/5.jpg" alt="Product 5" onclick="openModal('./Images/5.jpg')">
+            <img src="./Images/5.jpg" alt="Product 5">
             <p>ប្រភេទបំពង</p>
         </div>
         <div class="slider-item">
-            <img src="./Images/6.jpg" alt="Product 6" onclick="openModal('./Images/6.jpg')">
+            <img src="./Images/6.jpg" alt="Product 6">
             <p>ប្រភេទចំហុយ និង​ ស៊ុប</p>
         </div>
         <div class="slider-item">
-            <img src="./Images/7.jpg" alt="Product 7" onclick="openModal('./Images/7.jpg')">
+            <img src="./Images/7.jpg" alt="Product 7">
             <p>ប្រភេទចៀន និង​ ក្រឡុក</p>
         </div>
         <div class="slider-item">
-            <img src="./Images/8.jpg" alt="Product 8" onclick="openModal('./Images/8.jpg')">
+            <img src="./Images/8.jpg" alt="Product 8">
             <p>Ahchol</p>
         </div>
         <div class="slider-item">
-            <img src="./Images/9.jpg" alt="Product 9" onclick="openModal('./Images/9.jpg')">
+            <img src="./Images/9.jpg" alt="Product 9">
             <p>Energy Drink</p>
         </div>
         <div class="slider-item">
-            <img src="./Images/10.jpg" alt="Product 10" onclick="openModal('./Images/10.jpg')">
+            <img src="./Images/10.jpg" alt="Product 10">
             <p>Special Offer</p>
         </div>
     </div>
 </div>
+
+<!-- 
+    Animations Movement Image after header 3 image 
+-->
+
+<script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.image-slider img');
+
+    
+    function changeImage() {
+        // Remove the 'active' class from the current image
+        images[currentIndex].classList.remove('active');
+        
+        // Update index (loop back to the first image if we're at the end)
+        currentIndex = (currentIndex + 1) % images.length;
+        
+        // Add the 'active' class to the new image
+        images[currentIndex].classList.add('active');
+    }
+
+    // Change image every 8 seconds
+    setInterval(changeImage, 8000);
+</script>
+
+<script>
+    // Disable click functionality on images
+    document.querySelectorAll('.slider-item img').forEach(img => {
+        img.addEventListener('click', event => {
+            event.preventDefault(); // Prevent the default action
+            event.stopPropagation(); // Stop event propagation
+        });
+    });
+</script
 
 <!-- Modal to display image -->
 <div id="imageModal" class="modal">
@@ -398,7 +433,7 @@
     </style>
     
         <!-- 
-<div class="social-links">
+    <div class="social-links">
     <a href="#"><i class="fab fa-facebook-f"></i></a> 
     <a href="#"><i class="fab fa-twitter"></i></a>
     <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -410,33 +445,15 @@
 </div>
 
 <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.image-slider img');
-
-    function showSlide(index) {
-        if (index >= slides.length) currentSlide = 0;
-        if (index < 0) currentSlide = slides.length - 1;
-
-        slides.forEach((slide, i) => {
-            slide.classList.remove('active');
-            if (i === currentSlide) {
-                slide.classList.add('active');
-            }
+    // Disable click functionality on images
+    document.querySelectorAll('.slider-item img').forEach(img => {
+        img.addEventListener('click', event => {
+            event.preventDefault(); // Prevent the default action (modal opening)
+            event.stopPropagation(); // Stop event propagation (if any)
         });
-    }
+    });
 
-    function autoSlide() {
-        currentSlide++;
-        showSlide(currentSlide);
-    }
-
-    // Initialize slider
-    showSlide(currentSlide);
-
-    // Set interval for automatic sliding every 3 seconds
-    setInterval(autoSlide, 6000);
-
-    // Modal functionality
+    // Modal functionality (to open modal with image)
     function openModal(imageSrc) {
         const modal = document.getElementById('imageModal');
         const modalImage = document.getElementById('modalImage');
