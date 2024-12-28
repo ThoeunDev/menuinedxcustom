@@ -14,29 +14,50 @@
 
 
         .header {
-    background-color: #32373B; /* Set dark background */
-    background-image: 
-        url('./Images/header.png'), /* First image */
-        url('path/to/your/second-image.jpg'); /* Second image */
-    background-size: cover; /* Ensure images cover the entire area */
-    background-position: center center;
-    background-repeat: no-repeat;
-    padding: 80px 40px; /* Adjust padding */
-    text-align: center;
-    color: #FFFFFF; /* Make text more visible on the dark background */
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    animation: slideIn 1s ease-out, blink 2s infinite;
-}
+            position: relative;
+            background-color: #32373B;
+            background-image: url('./Images/header.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 80px 40px;
+            text-align: center;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            /*box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);*/
+            animation: slideIn 3s linear infinite, blink 1.5s infinite;
+        }
 
-.header-dark-background {
-    background-color: #2B2B2B; /* Darker section directly under the header */
-    padding: 50px;
-    text-align: center;
-}
+        /* Running animation */
+        @keyframes slideIn {
+            0% {
+                background-position: -500px center;
+            }
+            100% {
+                background-position: 500px center;
+            }
+        }
+
+        /* Blinking effect */
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .header-dark-background {
+            background-color: #2b2b2b;
+            padding: 50px;
+            text-align: center;
+        }
+    
+   
 
 
 
@@ -278,6 +299,7 @@
     </style>
 </head>
 <body>
+
 
 <div class="header">
     <h1></h1>
