@@ -6,30 +6,45 @@
     <title>Product Slider</title>
     <style>
         body {
+             margin: 0;
+             font-family: Times New Roman, sans-serif;
+             background-color: #32373B;
+             background-image: url('./Images/newyear/Chinese_new_year/op9.jpg'); /* Replace with your image path */
+             background-size: cover; /* Ensures the image covers the entire background */
+             background-position: center; /* Centers the image */
+             background-repeat: no-repeat; /* Prevents the image from repeating */
+            }
+
+        body {
             margin: 0;
             font-family: Times New Roman, sans-serif;
-            background-color: #32373B;
+            
         }
 
 
 
         .header {
             position: relative;
-            background-color: #32373B;
             background-image: url('./Images/header.png');
-            background-size: cover;
+            background-size: contain; /* Ensure the image fits within the specified dimensions */
             background-position: center;
             background-repeat: no-repeat;
-            padding: 80px 40px;
+            width: 100%; /* Adjust width as needed */
+            max-width: 1000px; /* Set a maximum width for the header */
+            height: 400px; /* Adjust height as needed */
+            margin: 0 auto; /* Center the header horizontally */
+            padding: 20px; /* Adjust padding for spacing */
             text-align: center;
             color: #FFFFFF;
             font-size: 14px;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
-            /*box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);*/
-            animation: slideIn 3s linear infinite, blink 1.5s infinite;
-        }
+    /*box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);*/
+    animation: slideIn 3s linear infinite, blink 1.5s infinite;
+}
+
+        
 
         /* Running animation */
         @keyframes slideIn {
@@ -52,7 +67,7 @@
         }
 
         .header-dark-background {
-            background-color: #2b2b2b;
+            
             padding: 50px;
             text-align: center;
         }
@@ -101,12 +116,12 @@
             position: relative;
             text-align: center;
             padding: 20px;
-            background-color: #32373B;
+           
         }
-
+        
         .image-slider {
             position: relative;
-            max-width: 500px;
+            max-width: 500px; /* 500px = Size of Image header promotions */
             margin: 0 auto;
             overflow: hidden;
         }
@@ -133,21 +148,17 @@
         }
 
         .slider-controls button {
-            background-color: rgba(0, 0, 0, 0.5);
+           
             color: #4A5859;
             border: none;
             padding: 10px;
             cursor: pointer;
         }
 
-        .slider-controls button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
+        
 
-        .product-slider {
-            background-color: #4A5859;
-            padding: 20px 10px;
-        }
+     
+        
 
         .product-slider h3 {
             text-align: center;
@@ -168,7 +179,7 @@
         }
 
         .slider-container::-webkit-scrollbar-thumb {
-            background-color: #505c7e;
+           
             border-radius: 4px;
         }
         /* Font Size Box Font Menu Button */
@@ -176,7 +187,7 @@
             flex: 0 0 auto;
             width: 390px;
             height: 590px;
-            background-color: #4A5859;
+          
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
@@ -207,7 +218,7 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.7);
+            
             justify-content: center;
             align-items: center;
         }
@@ -239,7 +250,7 @@
 
         /* Footer Styles */
         .footer {
-            background-color: #2C2C2C;
+            
             color: #FFFFFF;
             padding: 20px 15px;
             display: flex;
